@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>Chapter 2. line</title>
+		<!-- 顶点着色器和片元着色器代码 -->
+		<script id="vertex-shader" type="x-shader/x-vertex">
+			attribute vec3 vPosition;
+			attribute vec4 vColor;
+			varying vec4 colors;
+			void main(){
+				gl_Position = vec4(vPosition,2.0);
+				colors = vColor;
+			}
+		</script>
+		<script id="fragment-shader" type="x-shader/x-fragment">
+			precision mediump float;
+			varying vec4 colors;
+			void main(){
+				gl_FragColor = colors;
+			}
+		</script>
+		<!-- 一组相关的JS库 -->
+		<script type="text/javascript" src="../../js/common/webgl-utils.js"></script>
+		<script type="text/javascript" src="../../js/common/initShaders.js"></script>
+		<script type="text/javascript" src="../../js/common/gl-matrix-min.js"></script>
+		<!-- 绘制三角形的JS代码 -->
+		<script type="text/javascript" src="../../js/ch02/line-triangles.js"></script>
+		
+	</head>
+	<body>
+		<h1 div style="color: white;font-weight: bolder;"><a href="../../index.html"> <font face="楷体">返回首页</font> </a></h1>
+		
+		<div style="float: both;">
+			<select id="sel" size="1">
+				<option value="2D1">2D平面图形</option>
+				<option value="3D">3D立体图形</option>
+				<option value="2D2">2D线性平面图形</option>
+			</select>  -------这部分内容目前还不会实现
+		</div>
+		2D平面图形层数:&nbsp;&nbsp;&nbsp;&nbsp;<input id="s" name="2d" type="range" min="0" max="7" value="0" onchange="change1();initTriangles();" />
+		<p id = "demo1"></p>
+		<br />
+		3D立体图形层数:&nbsp;&nbsp;&nbsp;&nbsp;<input id="s2" name="3d" type="range" min="0" max="7" value="0" onchange="change2();init();" />
+		<p id = "demo2"></p>
+		<br />
+		2D线形平面层数:&nbsp;&nbsp;&nbsp;&nbsp;<input id="s3" name="line" type="range" min="0" max="7" value="0" onchange="change3();initTriangles_rota();" />
+		<p id = "demo3"></p>
+		<br />
+		旋转角度:（线性图）<input id="dd" type="range" min="0" max="360" value="0" onchange="frota();initTriangles_rota();" />
+		<p id = "demo4"></p>
+		<br />
+		<canvas id="gl-canvas" style="border:2px solid darkgray;" width="600" height="600"></canvas>
+	</body>
+</html>

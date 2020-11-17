@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+        <title>Task1</title>
+
+        <script id = "vertex-shader" type = "x-shader/x-vertex">
+            attribute vec4 vPosition;
+            void main(){
+                gl_Position = vPosition;
+            }
+        </script>
+        <script id = "fragment-shader" type="x-shader/x-fragment">
+            precision mediump float;
+            void main(){
+                gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+            }
+        </script>
+        <script type="text/javascript" src = "../../js/common/webgl-utils.js"></script>
+        <script type="text/javascript" src = "../../js/common/initShaders.js"></script>
+        <script type="text/javascript" src = "../../js/common/gl-matrix-min.js"></script>
+        
+        <script type="text/javascript" src="../../js/ch02/gasket-triangles.js"></script>
+    </head>
+    <body>
+		<h1 div style="color: white;font-weight: bolder;"><a href="../../index.html"> <font face="楷体">返回首页</font> </a></h1>
+        <h2>Sierpinski Gasket in 2D</h2>
+        <input type="range" min = "0" max="10" onchange="changelever(); initTriangles();" id = "inputID">
+        <p id = "demo">level</p>
+        <canvas id="gl-canvas" width = "521" height="521"></canvas>
+
+	</body>
+</html>
