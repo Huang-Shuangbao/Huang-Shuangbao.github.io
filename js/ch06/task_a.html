@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition;
+
+		uniform mat4 modelViewMatrix;
+		uniform mat4 projectionMatrix;
+
+		void main()
+		{
+			gl_Position = projectionMatrix * modelViewMatrix * vPosition;
+		}
+	</script>
+
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+
+		void main()
+		{
+			gl_FragColor = vec4( 1.0, 0.0, 0.0, 1.0 );
+		}
+	</script>
+
+    <script type="text/javascript" src="../../js/common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../../js/common/initShaders.js"></script>
+    <script type="text/javascript" src="../../js/common/gl-matrix.js"></script>
+    <script type="text/javascript" src="../../js/common/objloader.js"></script>
+
+    <script type="text/javascript" src="../../js/ch06/task_a.js"></script>
+</head>
+
+<body onload="initSphere()">
+    <span style="font-family: 楷体; font-size: 2em;">显示一个球体线框模型</span><br>
+    <canvas id="gl-canvas" width="800" height="600" >
+        你的浏览器不支持HTML5 Canvas元素
+    </canvas>
+	<fieldset style="width: 15%;">
+		<legend>分块数</legend>
+		<label>1<input id="num" type="range" value="3" min="1" max="8" step="1" onchange="change()" />8  &nbsp;</label>
+		<h1 id="test" style="font-size: 1em;"></h1>
+	</fieldset>
+</body>
+
+</html>
